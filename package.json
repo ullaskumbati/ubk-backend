@@ -1,0 +1,25 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "a backend for learning",
+  "keywords": [
+    "javascript",
+    "backend",
+    "ubk"
+  ],
+  "homepage": "https://github.com/ullaskumbati/ubk-backend#readme",
+  "bugs": {
+    "url": "https://github.com/ullaskumbati/ubk-backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ullaskumbati/ubk-backend.git"
+  },
+  "license": "ISC",
+  "author": "ullas bk",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
