@@ -34,7 +34,6 @@ const registerUser = asyncHandler(async (req, res) => {
   // return resppnse
 
   const { fullName, email, userName, password } = req.body;
-  //   console.log("email:", email);
   if (
     [fullName, email, userName, password].some((field) => field?.trim() === "")
   ) {
@@ -122,6 +121,7 @@ const loginUser = asyncHandler(async (req, res) => {
   const options = {
     httpOnly: true,
     secure: true,
+    sameSite: "None"
   };
 
   return res
@@ -156,6 +156,7 @@ const logoutUser = asyncHandler(async (req, res) => {
   const options = {
     httpOnly: true,
     secure: true,
+    sameSite: "None"
   };
   return res
     .status(200)
@@ -191,6 +192,7 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
     const options = {
       httpOnly: true,
       secure: true,
+      sameSite: "None"
     };
     const { accessToken, newRefreshToken } =
       await generateAccessAndRefreshTokens(user._id);
