@@ -18,7 +18,17 @@ import userRouter from './routes/user.routes.js'
 
 // routes declaration
 app.use("/api/v1/users", userRouter)
+// Add this as your last middleware in app.js
+app.use((err, req, res, next) => {
+    const statusCode = err.statusCode || 500;
+    const message = err.message || "Internal Server Error";
 
+    return res.status(statusCode).json({
+        success: false,
+        message: message,
+        errors: err.error || []
+    });
+});
 // http://localhost:8000/api/v1/users/register
 
 export {app}
