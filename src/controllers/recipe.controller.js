@@ -2,7 +2,7 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { cache } from "../utils/cache.js";
-import { normalizeList, makeKey } from "../utils/normalize.js";
+import { normalizeList, makeKey } from "../utils/Normalize.js";
 import { consumeQuota, getQuota } from "../utils/dailyQuota.js";
 import * as spoonacular from "../utils/Spoonacular.js";
 
