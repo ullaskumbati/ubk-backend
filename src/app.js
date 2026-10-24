@@ -15,9 +15,10 @@ app.use(cookieParser());
 
 //routes import
 import userRouter from './routes/user.routes.js'
-
+import recipeRouter from './routes/recipe.routes.js'
 // routes declaration
 app.use("/api/v1/users", userRouter)
+app.use("/api/v1/recipes",recipeRouter)
 // Add this as your last middleware in app.js
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
