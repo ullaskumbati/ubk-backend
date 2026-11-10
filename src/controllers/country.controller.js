@@ -1,17 +1,9 @@
-import { asyncHandler } from "../utils/asyncHandler.js"; // Or your standard error handling wrapper
+import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 
 const getCountryAnalytics = asyncHandler(async (req, res) => {
   try {
-    const searchQuery = req.query.search || '';
-    
-    // Build the external URL dynamically based on whether a search term was provided
-    let externalUrl = 'https://api.restcountries.com/countries/v5?limit=100';
-    if (searchQuery) {
-      externalUrl = `https://api.restcountries.com/countries/v5?q=${encodeURIComponent(searchQuery)}`;
-    }
-
-    const response = await fetch(externalUrl, {
+    const response = await fetch('https://api.restcountries.com/countries/v5?limit=100', {
       headers: {
         'Authorization': `Bearer ${process.env.REST_COUNTRIES_API_KEY}`
       }
