@@ -3,7 +3,7 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 
 const getCountryAnalytics = asyncHandler(async (req, res) => {
   try {
-    const response = await fetch('https://api.restcountries.com/countries/v5?limit=250', {
+    const response = await fetch('https://api.restcountries.com/countries/v5?limit=100', {
       headers: {
         'Authorization': `Bearer ${process.env.REST_COUNTRIES_API_KEY}`
       }
