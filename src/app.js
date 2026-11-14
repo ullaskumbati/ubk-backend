@@ -23,7 +23,7 @@ import chatRouter from './routes/chat.routes.js';
 app.use("/api/v1/users", userRouter)
 app.use("/api/v1/recipes",recipeRouter)
 app.use("/api/v1/countries", countryRouter);
-app.use("api/v1/chat",chatRouter)
+app.use("/api/v1/chat",chatRouter);
 // Add this as your last middleware in app.js
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
