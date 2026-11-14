@@ -4,6 +4,6 @@ import { verifyJwt } from "../middlewares/auth.middleware.js";
 const router = Router();
  
 // Later: add your auth middleware here, e.g. router.post("/", verifyJWT, chatWithLLM)
-router.route("/").post(verifyJwt, chatWithLLM);
+router.route("/").post(chatWithLLM);
  
 export default router;
