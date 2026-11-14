@@ -10,6 +10,7 @@ const sessions = new Map();
 const MAX_MESSAGES = 20; // sliding window to control tokens and cost
 
 export const chatWithLLM = async (req, res) => {
+    console.log("CHAT request received", req.body?.message);
   const { sessionId, message } = req.body;
 
   if (!sessionId || typeof message !== "string" || !message.trim()) {
@@ -29,7 +30,7 @@ export const chatWithLLM = async (req, res) => {
         ...history.slice(-MAX_MESSAGES),
       ],
     });
-
+        console.log("LLM stream started");  
     res.setHeader("Content-Type", "text/plain; charset=utf-8");
     let full = "";
     for await (const chunk of stream) {
