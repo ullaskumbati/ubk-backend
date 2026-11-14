@@ -48,7 +48,10 @@ export const chatWithLLM = async (req, res) => {
     console.error("LLM error:", err.status, err.message);
     history.pop(); // drop the user message that got no answer
     if (!res.headersSent) {
-      res.status(502).json({ error: "The AI service failed. Please try again." });
+    res.status(502).json({
+      error: "The AI service failed. Please try again.",
+      debug: { status: err.status, message: err.message },   // TEMPORARY, remove after debugging
+    });
     } else {
       res.end();
     }
