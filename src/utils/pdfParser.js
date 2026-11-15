@@ -1,17 +1,10 @@
-// Import the inner file: the package's index.js tries to read a test PDF when
-// loaded as an ES module and crashes. (Install with: npm install pdf-parse@1.1.1)
-import pdfParse from "pdf-parse/lib/pdf-parse.js";
+// unpdf wraps a modern PDF engine, so it reads many files the old pdf-parse@1.1.1 fails on.
+// Install with: npm install unpdf
+import { extractText, getDocumentProxy } from "unpdf";
 
 // Returns an array of page texts. pages[0] is page 1.
 export async function extractPdfPages(buffer) {
-  const pages = [];
-  await pdfParse(buffer, {
-    pagerender: async (pageData) => {
-      const content = await pageData.getTextContent();
-      const text = content.items.map((item) => item.str).join(" ");
-      pages.push(text);
-      return text;
-    },
-  });
-  return pages;
+  const pdf = await getDocumentProxy(new Uint8Array(buffer));
+  const { text } = await extractText(pdf, { mergePages: false });
+  return text;
 }

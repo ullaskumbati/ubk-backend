@@ -32,9 +32,11 @@ const uploadDocument = asyncHandler(async (req, res) => {
   try {
     pages = await extractPdfPages(file.buffer);
   } catch {
+    console.error("PDF parse failed:", file.originalname, err.message);   // add this
     throw new ApiError(422, "Could not read this PDF. It may be corrupted or password-protected.");
   }
-
+   console.log("PDF parsed:", file.originalname, "pages:", pages.length,
+    "chars:", pages.reduce((n, p) => n + p.length, 0));     
   // 2. CHUNK: split each page (so every chunk keeps its page number for citations)
   const pieces = [];
   pages.forEach((pageText, i) => {
