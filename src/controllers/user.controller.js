@@ -149,9 +149,7 @@ const logoutUser = asyncHandler(async (req, res) => {
         refreshToken: 1,
       },
     },
-    {
-      new: true,
-    }
+   { returnDocument: "after" }
   );
   const options = {
     httpOnly: true,
@@ -247,7 +245,7 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
         email: email,
       },
     },
-    { new: true }
+   { returnDocument: "after" }
   ).select("-password");
 
   return res
@@ -272,7 +270,7 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
         avatar: avatar.url,
       },
     },
-    { new: true }
+   { returnDocument: "after" }
   ).select("-password");
   return res
     .status(200)
@@ -296,7 +294,7 @@ const updateUserCoverImage = asyncHandler(async (req, res) => {
         coverImage: coverImage.url,
       },
     },
-    { new: true }
+    { returnDocument: "after" }
   ).select("-password");
   return res
     .status(200)
